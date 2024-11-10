@@ -28,11 +28,13 @@ min_chi2_expected_MC = IMinuitMinimizer(
 mc_node = model.storage["nodes.monte_carlo.H1"]
 parameter_k = model.storage["parameters.all.k"]
 parameter_k2 = model.storage["parameters.all.k2"]
-parameters = [parameter_k, parameter_k2]
-grid1d = np.linspace(0.1, 1, 6)#.reshape((11, 1))
-grid = np.transpose([np.tile(grid1d, len(grid1d)), 
-                            np.repeat(grid1d, len(grid1d))])
-print(grid)
+#parameters = [parameter_k, parameter_k2]
+#grid1d = np.linspace(0.1, 1, 6)#.reshape((11, 1))
+#grid = np.transpose([np.tile(grid1d, len(grid1d)), 
+#                            np.repeat(grid1d, len(grid1d))])
+#print(grid)
+parameters = [parameter_k]
+grid_1d = np.linspace(0.1, 1, 10)
 
 pvalues_for_grid = FeldmanCousins_method.FC(
     min_chi2_expected_DATA,
