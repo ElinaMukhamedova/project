@@ -6,22 +6,22 @@ from statistical_methods import FeldmanCousins_method
 model = model_17.Model()
 
 min_chi2_bf_DATA = IMinuitMinimizer(
-    model.storage["outputs.statistics.stat.H0.chi2_Neyman.bf_DATA"],
+    model.storage["outputs.chi2_Neyman.bf_DATA"],
     [model.storage["parameters.all.k"], model.storage["parameters.all.background"]],
 )
 
 min_chi2_expected_DATA = IMinuitMinimizer(
-    model.storage["outputs.statistics.stat.H1.chi2_Neyman.expected_DATA"],
+    model.storage["outputs.chi2_Neyman.expected_DATA"],
     [model.storage["parameters.all.background"]],
 )
 
 min_chi2_bf_MC = IMinuitMinimizer(
-    model.storage["outputs.statistics.stat.H0.chi2_Neyman.bf_MC"],
+    model.storage["outputs.chi2_Neyman.bf_MC"],
     [model.storage["parameters.all.k"], model.storage["parameters.all.background"]],
 )
 
 min_chi2_expected_MC = IMinuitMinimizer(
-    model.storage["outputs.statistics.stat.H1.chi2_Neyman.expected_MC"],
+    model.storage["outputs.chi2_Neyman.expected_MC"],
     [model.storage["parameters.all.background"]],
 )
 
