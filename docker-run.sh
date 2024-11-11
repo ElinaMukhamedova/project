@@ -6,7 +6,7 @@ docker run \
     -v  $PWD/multikeydict:/app/multikeydict \
     -v  $PWD/models:/app/models \
     -v  $PWD/scripts:/app/scripts \
-    -v  $PWD/statistics:/app/statistics \
+    -v  $PWD/statistical_methods:/app/statistical_methods \
     -v  $PWD/illustrations:/app/illustrations \
     -it dagflow:v00 /bin/bash
 

@@ -112,29 +112,29 @@ class Model:
             outputs.get_value("monte_carlo.H1") >> inputs.get_value("cholesky.MC_H1")
 
             Chi2.replicate(
-                name="chi2_Neyman.bf_MC",
+                name="statistics.stat.H0.chi2_Neyman.bf_MC",
             )
             outputs.get_value("observation.H0") >> inputs.get_value(
-                "chi2_Neyman.bf_MC.theory"
+                "statistics.stat.H0.chi2_Neyman.bf_MC.theory"
             )
             outputs.get_value("cholesky.MC_H1") >> inputs.get_value(
-                "chi2_Neyman.bf_MC.errors"
+                "statistics.stat.H0.chi2_Neyman.bf_MC.errors"
             )
             outputs.get_value("monte_carlo.H1") >> inputs.get_value(
-                "chi2_Neyman.bf_MC.data"
+                "statistics.stat.H0.chi2_Neyman.bf_MC.data"
             )
 
             Chi2.replicate(
-                name="chi2_Neyman.expected_MC",
+                name="statistics.stat.H1.chi2_Neyman.expected_MC",
             )
             outputs.get_value("observation.H1") >> inputs.get_value(
-                "chi2_Neyman.expected_MC.theory"
+                "statistics.stat.H1.chi2_Neyman.expected_MC.theory"
             )
             outputs.get_value("cholesky.MC_H1") >> inputs.get_value(
-                "chi2_Neyman.expected_MC.errors"
+                "statistics.stat.H1.chi2_Neyman.expected_MC.errors"
             )
             outputs.get_value("monte_carlo.H1") >> inputs.get_value(
-                "chi2_Neyman.expected_MC.data"
+                "statistics.stat.H1.chi2_Neyman.expected_MC.data"
             )
 
             MonteCarlo.replicate(
@@ -149,27 +149,27 @@ class Model:
             outputs.get_value("DATA.H1") >> inputs.get_value("cholesky.DATA_H1")
 
             Chi2.replicate(
-                name="chi2_Neyman.bf_DATA",
+                name="statistics.stat.H0.chi2_Neyman.bf_DATA",
             )
             outputs.get_value("observation.H0") >> inputs.get_value(
-                "chi2_Neyman.bf_DATA.theory"
+                "statistics.stat.H0.chi2_Neyman.bf_DATA.theory"
             )
             outputs.get_value("cholesky.DATA_H1") >> inputs.get_value(
-                "chi2_Neyman.bf_DATA.errors"
+                "statistics.stat.H0.chi2_Neyman.bf_DATA.errors"
             )
             outputs.get_value("DATA.H1") >> inputs.get_value(
-                "chi2_Neyman.bf_DATA.data"
+                "statistics.stat.H0.chi2_Neyman.bf_DATA.data"
             )
 
             Chi2.replicate(
-                name="chi2_Neyman.expected_DATA",
+                name="statistics.stat.H1.chi2_Neyman.expected_DATA",
             )
             outputs.get_value("observation.H1") >> inputs.get_value(
-                "chi2_Neyman.expected_DATA.theory"
+                "statistics.stat.H1.chi2_Neyman.expected_DATA.theory"
             )
             outputs.get_value("cholesky.DATA_H1") >> inputs.get_value(
-                "chi2_Neyman.expected_DATA.errors"
+                "statistics.stat.H1.chi2_Neyman.expected_DATA.errors"
             )
             outputs.get_value("DATA.H1") >> inputs.get_value(
-                "chi2_Neyman.expected_DATA.data"
+                "statistics.stat.H1.chi2_Neyman.expected_DATA.data"
             )
