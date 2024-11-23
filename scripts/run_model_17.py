@@ -6,4 +6,4 @@ scripts_directory_path = os.getcwd()
 project_directory_path = os.path.dirname(scripts_directory_path)
 
 model = model_17.Model()
-savegraph(model.graph, project_directory_path + "/illustrations/model_17-graph.png", show = "all")
+savegraph(model.graph, project_directory_path + "/outputs/plots/model_17-graph.png", show = "all")

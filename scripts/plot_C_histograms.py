@@ -33,7 +33,7 @@ def plot_C_histograms(
     settings: dict,
     C_true: float,
 ) -> None:
-    name = project_directory_path + "/illustrations/C_"
+    name = project_directory_path + "/outputs/plots/C_"
     for key in settings.keys():
         hist, bins, mean = settings[key]
         plt.bar(bins, hist, width = bins[1] - bins[0], alpha = 0.4, label = '$C_{'+key+'} = $' + str('{:.2f}'.format(mean)))

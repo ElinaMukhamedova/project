@@ -7,6 +7,6 @@ docker run \
     -v  $PWD/models:/app/models \
     -v  $PWD/scripts:/app/scripts \
     -v  $PWD/statistical_methods:/app/statistical_methods \
-    -v  $PWD/illustrations:/app/illustrations \
+    -v  $PWD/outputs:/app/outputs \
     -it dagflow:v00 /bin/bash
 
