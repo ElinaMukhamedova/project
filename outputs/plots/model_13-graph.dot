@@ -1,0 +1,291 @@
+digraph "" {
+	graph [dpi=300,
+		rankdir=LR
+	];
+	node [fontname="Liberation Mono",
+		label="\N"
+	];
+	edge [fontsize=10,
+		labeldistance=1.2,
+		labelfontsize=9
+	];
+	Array_0	[color=forestgreen,
+		depth=None,
+		label="{{[1]d\n0→1p|a⃗}|{constant background, number of events in each bin|path: background|index: background|{tainted}|{Σ=1e+02|Σ²=\
+1e+04|avg=1e+02|min=1e+02|max=1e+02|tainted}|[100.]\l}}",
+		nodedag="{parameter} →[0]Array[1]→",
+		shape=Mrecord];
+	Product_0	[color=forestgreen,
+		depth=None,
+		label="{{[13]d\n2p→1p|Π}|{observation.H0|{tainted}|{Σ=1.3e+03|Σ²=1.3e+05|avg=1e+02|min=1e+02|max=1e+02|tainted}|[100. 100. 100. ... \
+100. 100. 100. ... 100. 100. 100.]\l}}",
+		nodedag="{observation.H0} →[2]Product[1]→",
+		shape=Mrecord];
+	Array_0 -> Product_0	[arrowhead=odotopen,
+		arrowsize=0.5,
+		arrowtail=odot,
+		color=forestgreen,
+		dir=both,
+		headlabel=0];
+	Array_1	[color=forestgreen,
+		depth=None,
+		label="{{[1]d\n0→1p|a⃗}|{slope coefficient|path: k|index: k|{tainted}|{Σ=0|Σ²=0|avg=0|min=0|max=0|tainted}|[0.]\l}}",
+		nodedag="{parameter} →[0]Array[1]→",
+		shape=Mrecord];
+	Product_1	[color=forestgreen,
+		depth=None,
+		label="{{[13]d\n2p→1p|Π}|{signal.linear|{tainted}|{Σ=0|Σ²=0|avg=0|min=0|max=0|tainted}|[0. 0. 0. ... 0. 0. 0. ... 0. 0. 0.]\l}}",
+		nodedag="{signal.linear} →[2]Product[1]→",
+		shape=Mrecord];
+	Array_1 -> Product_1	[arrowhead=odotopen,
+		arrowsize=0.5,
+		arrowtail=odot,
+		color=forestgreen,
+		dir=both,
+		headlabel=0];
+	Array_2	[color=forestgreen,
+		depth=None,
+		label="{{[1]d\n0→1p|a⃗}|{quadratic coefficient|path: k2|index: k2|{tainted}|{Σ=0|Σ²=0|avg=0|min=0|max=0|tainted}|[0.]\l}}",
+		nodedag="{parameter} →[0]Array[1]→",
+		shape=Mrecord];
+	Product_2	[color=forestgreen,
+		depth=None,
+		label="{{[13]d\n2p→1p|Π}|{signal.quadratic|{tainted}|{Σ=0|Σ²=0|avg=0|min=0|max=0|tainted}|[0. 0. 0. ... 0. 0. 0. ... 0. 0. 0.]\l}}",
+		nodedag="{signal.quadratic} →[2]Product[1]→",
+		shape=Mrecord];
+	Array_2 -> Product_2	[arrowhead=odotopen,
+		arrowsize=0.5,
+		arrowtail=odot,
+		color=forestgreen,
+		dir=both,
+		headlabel=0];
+	Array_3	[color=forestgreen,
+		depth=None,
+		label="{{[13]d\n0→1p|a⃗}|{observation.energy.x|{tainted}|{Σ=84|Σ²=7.3e+02|avg=6.5|min=0.5|max=12|tainted}|[0.5 1.5 2.5 ... 5.5 6.5 \
+7.5 ... 10.5 11.5 12.5]\l}}",
+		nodedag="{observation.energy.x} →[0]Array[1]→",
+		shape=Mrecord];
+	Array_3 -> Product_1	[arrowhead=odotopen,
+		arrowsize=0.5,
+		arrowtail=dot,
+		color=forestgreen,
+		dir=both,
+		headlabel=1];
+	Array_4	[color=forestgreen,
+		depth=None,
+		label="{{[13]d\n0→1p|a⃗}|{observation.energy.x2|{tainted}|{Σ=7.3e+02|Σ²=7.4e+04|avg=56|min=0.25|max=1.6e+02|tainted}|[0.25 2.25 \
+6.25 ... 30.25 42.25 56.25 ... 110.25 132.25 156.25]\l}}",
+		nodedag="{observation.energy.x2} →[0]Array[1]→",
+		shape=Mrecord];
+	Array_4 -> Product_2	[arrowhead=odotopen,
+		arrowsize=0.5,
+		arrowtail=dot,
+		color=forestgreen,
+		dir=both,
+		headlabel=1];
+	Array_5	[color=forestgreen,
+		depth=None,
+		label="{{[13]d\n0→1p|a⃗}|{observation.unit|{tainted}|{Σ=13|Σ²=13|avg=1|min=1|max=1|tainted}|[1. 1. 1. ... 1. 1. 1. ... 1. 1. 1.]\l}}",
+		nodedag="{observation.unit} →[0]Array[1]→",
+		shape=Mrecord];
+	Array_5 -> Product_0	[arrowhead=odotopen,
+		arrowsize=0.5,
+		arrowtail=dot,
+		color=forestgreen,
+		dir=both,
+		headlabel=1];
+	Output_0_mid	[color=forestgreen,
+		height=0.1,
+		label="",
+		shape=cds,
+		weight=10,
+		width=0.1];
+	Product_0 -> Output_0_mid	[arrowhead=none,
+		arrowsize=0.5,
+		arrowtail=dot,
+		color=forestgreen,
+		dir=both];
+	Sum_0	[color=forestgreen,
+		depth=None,
+		label="{{[13]d\n3p→1p|Σ}|{observation.H1|{tainted}|{Σ=1.3e+03|Σ²=1.3e+05|avg=1e+02|min=1e+02|max=1e+02|tainted}|[100. 100. 100. ... \
+100. 100. 100. ... 100. 100. 100.]\l}}",
+		nodedag="{observation.H1} →[3]Sum[1]→",
+		shape=Mrecord];
+	Product_1 -> Sum_0	[arrowhead=odotopen,
+		arrowsize=0.5,
+		arrowtail=dot,
+		color=forestgreen,
+		dir=both,
+		headlabel=1];
+	Product_2 -> Sum_0	[arrowhead=odotopen,
+		arrowsize=0.5,
+		arrowtail=dot,
+		color=forestgreen,
+		dir=both,
+		headlabel=2];
+	Output_1_out	[label="",
+		shape=none];
+	Sum_0 -> Output_1_out	[arrowhead=empty,
+		arrowsize=0.5,
+		arrowtail=dot,
+		color=forestgreen,
+		dir=both];
+	MonteCarloLoc_0	[color=cyan,
+		depth=None,
+		label="{{[13]d\n1p→1p|MC:P}|{monte_carlo.H0|{tainted}|{Σ=1.4e+03|Σ²=1.4e+05|avg=1e+02|min=86|max=1.3e+02|tainted}|[ 99. 100. 103. \
+... 133. 107.  97. ... 102. 100. 105.]\l}}",
+		nodedag="{monte_carlo.H0} →[1]MonteCarloLoc[1]→",
+		shape=Mrecord];
+	Output_2_mid	[color=gray,
+		height=0.1,
+		label="",
+		shape=cds,
+		weight=10,
+		width=0.1];
+	MonteCarloLoc_0 -> Output_2_mid	[arrowhead=none,
+		arrowsize=0.5,
+		arrowtail=dot,
+		color=cyan,
+		dir=both];
+	Cholesky_0	[color=forestgreen,
+		depth=None,
+		label="{{[13]d\n1p→1p|sqrt(Vᵢ)}|{cholesky.MC_H0|{tainted}|{Σ=1.3e+02|Σ²=1.4e+03|avg=10|min=9.3|max=12|tainted}|[ 9.95 10.   10.15 \
+... 11.53 10.34  9.85 ... 10.1  10.   10.25]\l}}",
+		nodedag="{cholesky.MC_H0} →[1]Cholesky[1]→",
+		shape=Mrecord];
+	Chi2_0	[color=forestgreen,
+		depth=None,
+		label="{{[1]d\n3p→1p|χ²}|{statistics.stat.H0.chi2_Neyman|{tainted}|{Σ=14|Σ²=2e+02|avg=14|min=14|max=14|tainted}|[14.139954]\l}}",
+		nodedag="{statistics.stat.H0.chi2_Neyman} →[3]Chi2[1]→",
+		shape=Mrecord];
+	Cholesky_0 -> Chi2_0	[arrowhead=odotopen,
+		arrowsize=0.5,
+		arrowtail=dot,
+		color=forestgreen,
+		dir=both,
+		headlabel=2];
+	Output_3_out	[label="",
+		shape=none];
+	Chi2_0 -> Output_3_out	[arrowhead=empty,
+		arrowsize=0.5,
+		arrowtail=dot,
+		color=forestgreen,
+		dir=both];
+	Cholesky_1	[color=forestgreen,
+		depth=None,
+		label="{{[13]d\n1p→1p|sqrt(Vᵢ)}|{cholesky.theory_H0|{tainted}|{Σ=1.3e+02|Σ²=1.3e+03|avg=10|min=10|max=10|tainted}|[10. 10. 10. ... \
+10. 10. 10. ... 10. 10. 10.]\l}}",
+		nodedag="{cholesky.theory_H0} →[1]Cholesky[1]→",
+		shape=Mrecord];
+	Chi2_1	[color=forestgreen,
+		depth=None,
+		label="{{[1]d\n3p→1p|χ²}|{statistics.stat.H0.chi2_Pearson|{tainted}|{Σ=17|Σ²=2.9e+02|avg=17|min=17|max=17|tainted}|[17.]\l}}",
+		nodedag="{statistics.stat.H0.chi2_Pearson} →[3]Chi2[1]→",
+		shape=Mrecord];
+	Cholesky_1 -> Chi2_1	[arrowhead=odotopen,
+		arrowsize=0.5,
+		arrowtail=dot,
+		color=forestgreen,
+		dir=both,
+		headlabel=2];
+	Output_4_out	[label="",
+		shape=none];
+	Chi2_1 -> Output_4_out	[arrowhead=empty,
+		arrowsize=0.5,
+		arrowtail=dot,
+		color=forestgreen,
+		dir=both];
+	CNPStat_0	[color=gray,
+		depth=None,
+		label="{{[13]d\n2p→1p|σ(CNP)}|{CNP_denominator|{tainted}|{Σ=1.3e+02|Σ²=1.3e+03|avg=10|min=9.7|max=10|tainted}|[ 9.98 10.   10.05 \
+... 10.44 10.11  9.95 ... 10.03 10.   10.08]\l}}",
+		nodedag="{CNP_denominator} →[2]CNPStat[1]→",
+		shape=Mrecord];
+	Chi2_2	[color=forestgreen,
+		depth=None,
+		label="{{[1]d\n3p→1p|χ²}|{statistics.stat.H0.chi2_CNP|{tainted}|{Σ=16|Σ²=2.6e+02|avg=16|min=16|max=16|tainted}|[16.046651]\l}}",
+		nodedag="{statistics.stat.H0.chi2_CNP} →[3]Chi2[1]→",
+		shape=Mrecord];
+	CNPStat_0 -> Chi2_2	[arrowhead=odotopen,
+		arrowsize=0.5,
+		arrowtail=dot,
+		color=forestgreen,
+		dir=both,
+		headlabel=2];
+	Output_5_out	[label="",
+		shape=none];
+	Chi2_2 -> Output_5_out	[arrowhead=empty,
+		arrowsize=0.5,
+		arrowtail=dot,
+		color=forestgreen,
+		dir=both];
+	Output_0_mid -> Sum_0	[arrowhead=odotopen,
+		arrowsize=0.5,
+		arrowtail=none,
+		color=forestgreen,
+		dir=both,
+		headlabel=0];
+	Output_0_mid -> MonteCarloLoc_0	[arrowhead=odotopen,
+		arrowsize=0.5,
+		arrowtail=none,
+		color=forestgreen,
+		dir=both];
+	Output_0_mid -> Chi2_0	[arrowhead=odotopen,
+		arrowsize=0.5,
+		arrowtail=none,
+		color=forestgreen,
+		dir=both,
+		headlabel=1];
+	Output_0_mid -> Cholesky_1	[arrowhead=odotopen,
+		arrowsize=0.5,
+		arrowtail=none,
+		color=forestgreen,
+		dir=both];
+	Output_0_mid -> Chi2_1	[arrowhead=odotopen,
+		arrowsize=0.5,
+		arrowtail=none,
+		color=forestgreen,
+		dir=both,
+		headlabel=1];
+	Output_0_mid -> CNPStat_0	[arrowhead=odotopen,
+		arrowsize=0.5,
+		arrowtail=none,
+		color=forestgreen,
+		dir=both,
+		headlabel=1];
+	Output_0_mid -> Chi2_2	[arrowhead=odotopen,
+		arrowsize=0.5,
+		arrowtail=none,
+		color=forestgreen,
+		dir=both,
+		headlabel=1];
+	Output_2_mid -> Cholesky_0	[arrowhead=odotopen,
+		arrowsize=0.5,
+		arrowtail=none,
+		color=cyan,
+		dir=both];
+	Output_2_mid -> Chi2_0	[arrowhead=odotopen,
+		arrowsize=0.5,
+		arrowtail=none,
+		color=cyan,
+		dir=both,
+		headlabel=0];
+	Output_2_mid -> Chi2_1	[arrowhead=odotopen,
+		arrowsize=0.5,
+		arrowtail=none,
+		color=cyan,
+		dir=both,
+		headlabel=0];
+	Output_2_mid -> CNPStat_0	[arrowhead=odotopen,
+		arrowsize=0.5,
+		arrowtail=none,
+		color=cyan,
+		dir=both,
+		headlabel=0];
+	Output_2_mid -> Chi2_2	[arrowhead=odotopen,
+		arrowsize=0.5,
+		arrowtail=none,
+		color=cyan,
+		dir=both,
+		headlabel=0];
+}
