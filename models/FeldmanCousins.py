@@ -8,6 +8,7 @@ from dagflow.lib.linalg import Cholesky
 from dgf_statistics.Chi2 import Chi2
 from dgf_statistics.MonteCarlo import MonteCarlo
 from dgf_statistics import CNPStat
+from dgf_statistics import LogPoisson
 
 from numpy import linspace, ones
 from dagflow.lib.common import Array
@@ -342,3 +343,7 @@ class FC_model:
             outputs.get_value("DATA.H1") >> inputs.get_value(
                 "chi2_CNP.expected_DATA.data"
             )
+
+            #################################################################################
+
+            

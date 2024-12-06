@@ -1,15 +1,10 @@
-from models import model_13
+from models import ConstantBackground
 from dgf_statistics.minimizer.iminuitminimizer import IMinuitMinimizer
 from dgf_statistics.minimizer.minimizerbase import MinimizerBase
 from dgf_statistics.MonteCarlo import MonteCarlo
 import numpy as np
 from matplotlib import pyplot as plt
 import os
-
-scripts_directory_path = os.getcwd()
-project_directory_path = os.path.dirname(scripts_directory_path)
-
-model = model_13.Model()
 
 def parameter_histogram(
     min_chi2: MinimizerBase,
@@ -33,6 +28,8 @@ def plot_C_histograms(
     settings: dict,
     C_true: float,
 ) -> None:
+    scripts_directory_path = os.getcwd()
+    project_directory_path = os.path.dirname(scripts_directory_path)
     name = project_directory_path + "/outputs/plots/C_"
     for key in settings.keys():
         hist, bins, mean = settings[key]
@@ -45,28 +42,3 @@ def plot_C_histograms(
     plt.title('Model: flat spectrum, y = C; $C_{true}$ = ' + str(C_true))
     plt.legend()
     plt.savefig(name)
-
-min_H0_chi2_Neyman = IMinuitMinimizer(
-    model.storage["outputs.statistics.stat.H0.chi2_Neyman"],
-    [model.storage["parameters.all.background"]],
-)
-
-min_H0_chi2_Pearson = IMinuitMinimizer(
-    model.storage["outputs.statistics.stat.H0.chi2_Pearson"],
-    [model.storage["parameters.all.background"]],
-)
-
-min_H0_chi2_CNP = IMinuitMinimizer(
-    model.storage["outputs.statistics.stat.H0.chi2_CNP"],
-    [model.storage["parameters.all.background"]],
-)
-
-mc_H0_node = model.storage["nodes.monte_carlo.H0"]
-
-settings = {
-    "Neyman": parameter_histogram(min_H0_chi2_Neyman, mc_H0_node, 30000, 100),
-    "Pearson": parameter_histogram(min_H0_chi2_Pearson, mc_H0_node, 30000, 100),
-    "CNP": parameter_histogram(min_H0_chi2_CNP, mc_H0_node, 30000, 100),
-}
-
-plot_C_histograms(settings, model.storage["parameters.all.background"].value)

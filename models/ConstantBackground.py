@@ -12,7 +12,7 @@ from dgf_statistics import CNPStat
 from numpy import linspace, ones
 from dagflow.lib.common import Array
 
-class Model:
+class ConstantBackground_model:
 
     def __init__(
         self,
