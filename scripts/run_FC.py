@@ -1,11 +1,11 @@
-from argparse import Namespace
-from argparse import ArgumentParser
+from argparse import ArgumentParser, Namespace
 
-from models import load_model
+import numpy as np
 
 from dgf_statistics.minimizer.iminuitminimizer import IMinuitMinimizer
-import numpy as np
+from models import load_model
 from statistical_methods import FeldmanCousins_method
+
 
 def main(opts: Namespace) -> None:
     chi2_type = opts.chi2_type
@@ -20,12 +20,12 @@ def main(opts: Namespace) -> None:
         [model.storage["parameters.all.k"], model.storage["parameters.all.background"]],
     )
 
-    min_chi2_expected_DATA = IMinuitMinimizer(  
+    min_chi2_expected_DATA = IMinuitMinimizer(
         model.storage[f"outputs.chi2_{chi2_type}.expected_DATA"],
         [model.storage["parameters.all.background"]],
     )
 
-    min_chi2_bf_MC = IMinuitMinimizer(  
+    min_chi2_bf_MC = IMinuitMinimizer(
         model.storage[f"outputs.chi2_{chi2_type}.bf_MC"],
         [model.storage["parameters.all.k"], model.storage["parameters.all.background"]],
     )
@@ -41,12 +41,11 @@ def main(opts: Namespace) -> None:
     parameters = [parameter_k, parameter_k2]
 
     grid1d = np.linspace(0.1, 1, 6)
-    grid = np.transpose([np.tile(grid1d, len(grid1d)), 
-                            np.repeat(grid1d, len(grid1d))])
-    
+    grid = np.transpose([np.tile(grid1d, len(grid1d)), np.repeat(grid1d, len(grid1d))])
+
     print(grid)
 
-    #pvalues_for_grid = FeldmanCousins_method.FC(
+    # pvalues_for_grid = FeldmanCousins_method.FC(
     #    min_chi2_expected_DATA,
     #    min_chi2_bf_DATA,
     #    min_chi2_expected_MC,
@@ -54,16 +53,17 @@ def main(opts: Namespace) -> None:
     #    parameters,
     #    grid,
     #    mc_node,
-    #)
+    # )
+
 
 if __name__ == "__main__":
     parser = ArgumentParser()
 
     parser.add_argument(
         "--chi2_type",
-        default = "Poisson",
-        choices = ["Poisson", "Neyman", "Pearson", "CNP"],
-        help = "chi-squared type",
+        default="Poisson",
+        choices=["Poisson", "Neyman", "Pearson", "CNP"],
+        help="chi-squared type",
     )
 
     main(parser.parse_args())

@@ -6,6 +6,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 import os
 
+
 def parameter_histogram(
     min_chi2: MinimizerBase,
     mc_node: MonteCarlo,
@@ -24,6 +25,7 @@ def parameter_histogram(
     mean = np.mean(fit_parameters)
     return density_hist, bins, mean
 
+
 def plot_C_histograms(
     settings: dict,
     C_true: float,
@@ -33,12 +35,18 @@ def plot_C_histograms(
     name = project_directory_path + "/outputs/plots/C_"
     for key in settings.keys():
         hist, bins, mean = settings[key]
-        plt.bar(bins, hist, width = bins[1] - bins[0], alpha = 0.4, label = '$C_{'+key+'} = $' + str('{:.2f}'.format(mean)))
-        plt.vlines(mean, 0, hist.max(), colors='r', linestyle='dashed', linewidth=1)
+        plt.bar(
+            bins,
+            hist,
+            width=bins[1] - bins[0],
+            alpha=0.4,
+            label="$C_{" + key + "} = $" + str("{:.2f}".format(mean)),
+        )
+        plt.vlines(mean, 0, hist.max(), colors="r", linestyle="dashed", linewidth=1)
         name += key + "_"
     name += "histograms.png"
-    plt.xlabel(r'$C$', loc = 'right')
-    plt.ylabel(r'$\rho$', rotation = 0, loc = 'top')
-    plt.title('Model: flat spectrum, y = C; $C_{true}$ = ' + str(C_true))
+    plt.xlabel(r"$C$", loc="right")
+    plt.ylabel(r"$\rho$", rotation=0, loc="top")
+    plt.title("Model: flat spectrum, y = C; $C_{true}$ = " + str(C_true))
     plt.legend()
     plt.savefig(name)

@@ -1,16 +1,16 @@
+from numpy import linspace, ones
+
 from dagflow.bundles.file_reader import FileReader
 from dagflow.bundles.load_parameters import load_parameters
 from dagflow.core.graph import Graph
 from dagflow.core.storage import NodeStorage
 from dagflow.lib.arithmetic import Product, Sum
+from dagflow.lib.common import Array
 from dagflow.lib.linalg import Cholesky
-
+from dgf_statistics import CNPStat
 from dgf_statistics.Chi2 import Chi2
 from dgf_statistics.MonteCarlo import MonteCarlo
-from dgf_statistics import CNPStat
 
-from numpy import linspace, ones
-from dagflow.lib.common import Array
 
 class ConstantBackground_model:
 
@@ -111,7 +111,6 @@ class ConstantBackground_model:
             )
             outputs.get_value("monte_carlo.H0") >> inputs.get_value("cholesky.MC_H0")
 
-
             Chi2.replicate(
                 name="statistics.stat.H0.chi2_Neyman",
             )
@@ -128,7 +127,9 @@ class ConstantBackground_model:
             Cholesky.replicate(
                 name="cholesky.theory_H0",
             )
-            outputs.get_value("observation.H0") >> inputs.get_value("cholesky.theory_H0")
+            outputs.get_value("observation.H0") >> inputs.get_value(
+                "cholesky.theory_H0"
+            )
 
             Chi2.replicate(
                 name="statistics.stat.H0.chi2_Pearson",
@@ -143,9 +144,7 @@ class ConstantBackground_model:
                 "statistics.stat.H0.chi2_Pearson.errors"
             )
 
-            CNPStat.replicate(
-                name = "CNP_denominator"
-            )
+            CNPStat.replicate(name="CNP_denominator")
             outputs.get_value("observation.H0") >> inputs.get_value(
                 "CNP_denominator.theory"
             )

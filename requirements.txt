@@ -17,3 +17,5 @@ tabulate
 uproot
 iminuit
 ipython
+black
+isort

@@ -1,20 +1,19 @@
+from numpy import linspace, ones
+
 from dagflow.bundles.file_reader import FileReader
 from dagflow.bundles.load_parameters import load_parameters
 from dagflow.core.graph import Graph
 from dagflow.core.storage import NodeStorage
 from dagflow.lib.arithmetic import Product, Sum
+from dagflow.lib.common import Array
 from dagflow.lib.linalg import Cholesky
-
+from dgf_statistics import CNPStat, LogPoisson
 from dgf_statistics.Chi2 import Chi2
 from dgf_statistics.MonteCarlo import MonteCarlo
-from dgf_statistics import CNPStat
-from dgf_statistics import LogPoisson
 
-from numpy import linspace, ones
-from dagflow.lib.common import Array
 
 class FC_model:
-    
+
     __slots__ = (
         "storage",
         "graph",
@@ -66,7 +65,6 @@ class FC_model:
             edges = linspace(E_min, E_max, N)
             x = (edges[1:] + edges[:-1]) / 2.0
             observation = ones(N - 1)
-
 
             node_x, _ = Array.replicate(
                 name="observation.energy.x",
@@ -135,12 +133,16 @@ class FC_model:
             Cholesky.replicate(
                 name="cholesky.theory_H0",
             )
-            outputs.get_value("observation.H0") >> inputs.get_value("cholesky.theory_H0")
+            outputs.get_value("observation.H0") >> inputs.get_value(
+                "cholesky.theory_H0"
+            )
 
             Cholesky.replicate(
                 name="cholesky.theory_H1",
             )
-            outputs.get_value("observation.H1") >> inputs.get_value("cholesky.theory_H1")
+            outputs.get_value("observation.H1") >> inputs.get_value(
+                "cholesky.theory_H1"
+            )
 
             #################################################################################
 
@@ -179,9 +181,7 @@ class FC_model:
             outputs.get_value("cholesky.DATA_H1") >> inputs.get_value(
                 "chi2_Neyman.bf_DATA.errors"
             )
-            outputs.get_value("DATA.H1") >> inputs.get_value(
-                "chi2_Neyman.bf_DATA.data"
-            )
+            outputs.get_value("DATA.H1") >> inputs.get_value("chi2_Neyman.bf_DATA.data")
 
             Chi2.replicate(
                 name="chi2_Neyman.expected_DATA",
@@ -252,9 +252,7 @@ class FC_model:
 
             #################################################################################
 
-            CNPStat.replicate(
-                name = "CNP_bf_MC_denominator"
-            )
+            CNPStat.replicate(name="CNP_bf_MC_denominator")
             outputs.get_value("observation.H0") >> inputs.get_value(
                 "CNP_bf_MC_denominator.theory"
             )
@@ -262,9 +260,7 @@ class FC_model:
                 "CNP_bf_MC_denominator.data"
             )
 
-            CNPStat.replicate(
-                name = "CNP_expected_MC_denominator"
-            )
+            CNPStat.replicate(name="CNP_expected_MC_denominator")
             outputs.get_value("observation.H1") >> inputs.get_value(
                 "CNP_expected_MC_denominator.theory"
             )
@@ -272,9 +268,7 @@ class FC_model:
                 "CNP_expected_MC_denominator.data"
             )
 
-            CNPStat.replicate(
-                name = "CNP_bf_DATA_denominator"
-            )
+            CNPStat.replicate(name="CNP_bf_DATA_denominator")
             outputs.get_value("observation.H0") >> inputs.get_value(
                 "CNP_bf_DATA_denominator.theory"
             )
@@ -282,9 +276,7 @@ class FC_model:
                 "CNP_bf_DATA_denominator.data"
             )
 
-            CNPStat.replicate(
-                name = "CNP_expected_DATA_denominator"
-            )
+            CNPStat.replicate(name="CNP_expected_DATA_denominator")
             outputs.get_value("observation.H1") >> inputs.get_value(
                 "CNP_expected_DATA_denominator.theory"
             )
@@ -327,9 +319,7 @@ class FC_model:
             outputs.get_value("CNP_bf_DATA_denominator") >> inputs.get_value(
                 "chi2_CNP.bf_DATA.errors"
             )
-            outputs.get_value("DATA.H1") >> inputs.get_value(
-                "chi2_CNP.bf_DATA.data"
-            )
+            outputs.get_value("DATA.H1") >> inputs.get_value("chi2_CNP.bf_DATA.data")
 
             Chi2.replicate(
                 name="chi2_CNP.expected_DATA",
@@ -345,5 +335,3 @@ class FC_model:
             )
 
             #################################################################################
-
-            
