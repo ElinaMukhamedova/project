@@ -1,8 +1,9 @@
-from dgf_statistics.minimizer.minimizerbase import MinimizerBase
-from dagflow.parameters import Parameter
-from dgf_statistics.MonteCarlo import MonteCarlo
 import numpy as np
 from scipy import interpolate
+
+from dagflow.parameters import Parameter
+from dgf_statistics.minimizer.minimizerbase import MinimizerBase
+from dgf_statistics.MonteCarlo import MonteCarlo
 
 
 def push_grid_values(parameters: list[Parameter], grid_point: np.ndarray):

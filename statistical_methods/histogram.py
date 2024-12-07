@@ -1,10 +1,10 @@
-from models import ConstantBackground
-from dgf_statistics.minimizer.iminuitminimizer import IMinuitMinimizer
-from dgf_statistics.minimizer.minimizerbase import MinimizerBase
-from dgf_statistics.MonteCarlo import MonteCarlo
+import os
+
 import numpy as np
 from matplotlib import pyplot as plt
-import os
+
+from dgf_statistics.minimizer.minimizerbase import MinimizerBase
+from dgf_statistics.MonteCarlo import MonteCarlo
 
 
 def parameter_histogram(
